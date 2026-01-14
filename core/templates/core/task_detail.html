@@ -1,0 +1,17 @@
+<!-- core/templates/core/task_detail.html -->
+{% extends 'core/base.html' %}
+
+{% block title %}Task Detail: {{ task.title }}{% endblock %}
+
+{% block content %}
+    <h1>Task Detail: {{ task.title }}</h1>
+    <p>Description: {{ task.description }}</p>
+    <p>Assigned To: {{ task.assigned_to.username }}</p>
+    <p>Due Date: {{ task.due_date }}</p>
+    <p>Status: {{ task.status }}</p>
+    {% if task.status == 'completed' %}
+        <h2>Completion Report</h2>
+        <p>{{ task.completion_report }}</p>
+        <p>Worked Hours: {{ task.worked_hours }}</p>
+    {% endif %}
+{% endblock %}

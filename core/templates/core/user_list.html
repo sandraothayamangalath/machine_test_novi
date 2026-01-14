@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Users - Task App</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #333; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <h1>Manage Users</h1>
+
+    <p>Total users in database: <strong>{{ users.count }}</strong></p>
+
+    {% if users %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Assigned Admin</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>{{ user.admin.username|default:"— None —" }}</td>
+                        <td>
+                            <a href="{% url 'user_edit' user.pk %}">Edit</a> |
+                            <a href="{% url 'user_delete' user.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="4" style="text-align:center;">No users found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="color: gray;">No users exist in the system yet.</p>
+    {% endif %}
+
+    <br><br>
+    <a href="{% url 'user_create' %}" style="padding: 10px 20px; background: #28a745; color: white; border-radius: 4px; text-decoration: none;">
+        + Create New User
+    </a>
+
+</body>
+</html>

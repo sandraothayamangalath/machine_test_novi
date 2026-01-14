@@ -1,0 +1,72 @@
+# .gitignore for Django Task Management App
+
+# Python / Bytecode
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Django / Project files
+*.log
+local_settings.py
+db.sqlite3                # ← SQLite database (development)
+db.sqlite3-journal        # ← SQLite journal file
+db.sqlite3-shm
+db.sqlite3-wal
+media/
+staticfiles/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Testing / Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.tox/
+.nox/
+.pytest_cache/
+.cache/
+
+# macOS / Windows junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Logs from servers
+gunicorn.log
+uvicorn.log
+*.log.*
+
+# Deployment / CI (optional)
+Dockerfile*
+docker-compose*
+.gitattributes
+.gitmodules

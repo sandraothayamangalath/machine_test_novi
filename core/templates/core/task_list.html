@@ -1,0 +1,25 @@
+<!-- core/templates/core/task_list.html -->
+{% extends 'core/base.html' %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+    <h1>Task List</h1>
+    <a href="{% url 'task_create' %}">Create New Task</a>
+    <table border="1">
+        <tr><th>Title</th><th>Assigned To</th><th>Due Date</th><th>Status</th><th>Actions</th></tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.assigned_to.username }}</td>
+                <td>{{ task.due_date }}</td>
+                <td>{{ task.status }}</td>
+                <td>
+                    <a href="{% url 'task_detail' task.pk %}">View</a> |
+                    <a href="{% url 'task_edit' task.pk %}">Edit</a> |
+                    <a href="{% url 'task_delete' task.pk %}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
